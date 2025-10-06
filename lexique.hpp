@@ -1,11 +1,13 @@
 #ifndef __lexique_h
 #define __lexique_h
-pragma once
+#pragma once
 
 // Bibliothèques
 #include <string>
 #include <iostream>
 using namespace std;
+
+class Lexique {
 
 private:
     string nom;
@@ -22,5 +24,6 @@ public:
     // Mutateurs
 
 };
+
 
 #endif
