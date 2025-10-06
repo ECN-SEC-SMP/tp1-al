@@ -10,8 +10,8 @@ int main()
 
     uint16_t occ = lex.getOccurencesFromWord("new");
     std::cout << "Occurences du mot \"new\" (attendu=63): " << occ << std::endl;
-    occ = lex.getOccurencesFromWord("feur");
-    std::cout << "Occurences du mot \"feur\" (attendu=0): " << occ << std::endl;
+    occ = lex.getOccurencesFromWord("coubeh");
+    std::cout << "Occurences du mot \"coubeh\" (attendu=0): " << occ << std::endl;
 
     string texte = "test.txt";
     string mot = "Callot";

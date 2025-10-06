@@ -42,7 +42,7 @@ Lexique::Lexique(string nom, string nom_fichier)
 
 // Getter
 string Lexique::getNom() const { return this->nom; }
-const map<string, uint16_t>& Lexique::getOccurences() const { return this->occurences; }
+const map<string, uint16_t> &Lexique::getOccurences() const { return this->occurences; }
 
 // Setter
 void Lexique::setNom(string nom) { this->nom = nom; }
@@ -54,6 +54,7 @@ void Lexique::sauvegarderLexique(string texte) // Sauvegarde d'un lexique
     ofstream fichier(texte); //  Création du fichier
     if (fichier.is_open())   // Si ouverture OK
     {
+        // On parcours la liste
         for (map<string, uint16_t>::iterator itmap = occurences.begin(); itmap != occurences.end(); ++itmap)
         {
             fichier << "Occurence du mot '" << itmap->first << "' : " << itmap->second << endl;
@@ -81,7 +82,7 @@ void Lexique::supprimerMot(string nom) // Suppression d'un mot du lexique
 
 uint16_t Lexique::nombreDeMots() // Compter le nombre de mots différents dans un lexique
 {
-    return occurences.size();   // Retourne la taille de la map (nombre de mots)
+    return occurences.size(); // Retourne la taille de la map (nombre de mots)
 }
 
 uint16_t Lexique::getOccurencesFromWord(string mot)
@@ -125,4 +126,17 @@ std::ostream& operator<<(std::ostream& os, const Lexique& lex)
     }
     return os;
 }
- 
+
+std::ostream &operator-=(std::ostream &os, const Lexique &lex) // Opérateur -= surchargé
+{
+    for (map<string, uint16_t>::const_iterator itmap = lex.getOccurences().begin(); itmap != lex.getOccurences().end(); ++itmap)
+    {
+        map<string, uint16_t>::const_iterator found = lex.getOccurences().find(itmap->first);
+        if (found != lex.getOccurences().end())
+        {
+            found->second -= iter->second;
+        };
+    }
+
+    return os;
+}
