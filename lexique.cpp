@@ -19,7 +19,6 @@ void Lexique::setOccurences(map<string, uint16_t> occurences) { this->occurences
 void sauvegarderLexique(string texte) // Sauvegarde d'un lexique
 {
     ofstream fichier(texte);                   //  Création du fichier
-    ifstream fichier(texte.c_str(), ios::out); // Mode écriture
     if (fichier)                               // si l'ouverture a réussi
     {
         // instructions
