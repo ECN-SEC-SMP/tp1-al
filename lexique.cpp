@@ -21,7 +21,7 @@ Lexique::Lexique(string nom, string nom_fichier)
     // Il faut dupliquer la string pour respecter le const de ".c_str()"
     char *dup = strdup(contenu.c_str());
     char *mot;
-    mot = strtok(dup, " \r\n");
+    mot = strtok(dup, "“”‘’- \r\n");
 
     while (mot != NULL)
     {
@@ -35,7 +35,7 @@ Lexique::Lexique(string nom, string nom_fichier)
         {
             occurences[mot_string] = 1;
         }
-        mot = strtok(NULL, " \r\n");
+        mot = strtok(NULL, "“”‘’- \r\n");
     }
     free(dup);
 }
