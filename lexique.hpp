@@ -4,20 +4,22 @@
 
 // Bibliothèques
 #include <string>
+#include <map>
 #include <iostream>
+#include <cstdint>
+
 using namespace std;
 
 class Lexique {
 
 private:
     string nom;
-
+    map<string, uint32_t> occurences;
 public:
     int occurence;
 
     // Constructeurs
-    Lexique(string nom, string occurence);
-    Lexique(string nom);
+    Lexique(string nom, string nom_fichier);
 
     // Accesseurs
 
