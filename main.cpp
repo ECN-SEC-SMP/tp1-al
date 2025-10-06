@@ -15,5 +15,10 @@ int main()
     std::cout << "Occurences du mot \"feur\" (attendu=0): " << occ << std::endl;
 
     string texte = "test.txt";
+    string mot = "Callot";
+    int nbmot = 0;
+    lex.supprimerMot(mot);
     lex.sauvegarderLexique(texte);
+    nbmot = lex.nombreDeMots();
+    cout << "Nombres de mots différents : " << nbmot << endl;
 }

@@ -11,6 +11,7 @@
 
 using namespace std;
 
+// Création de la classe
 class Lexique {
 
 private:
@@ -32,6 +33,8 @@ public:
 
     // Fonctions
     void sauvegarderLexique(string texte);
+    void supprimerMot(string nom);
+    uint16_t nombreDeMots();
     uint16_t getOccurencesFromWord(string mot);
 };
 
