@@ -14,7 +14,7 @@ class Lexique {
 
 private:
     string nom;
-    map<string, uint32_t> occurences;
+    map<string, uint16_t> occurences;
 public:
     int occurence;
 
@@ -22,8 +22,12 @@ public:
     Lexique(string nom, string nom_fichier);
 
     // Accesseurs
+    string getNom() const;
+    map<string, uint16_t> getOccurences();
 
     // Mutateurs
+    void setNom(string nom);
+    void setOccurences(map<string, uint16_t> occurences);
 
 };
 
