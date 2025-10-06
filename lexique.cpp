@@ -97,6 +97,26 @@ uint16_t Lexique::getOccurencesFromWord(string mot)
     }
 }
 
+void Lexique::addWordUsage(string mot, uint16_t occ) {
+    // Si le mot est déjà dans le lexique
+    if (occurences.find(mot) != occurences.end())
+    {
+        occurences[mot] = occurences[mot] + occ;
+    }
+    else
+    {
+        occurences[mot] = occ;
+    }
+}
+
+Lexique& Lexique::operator+=(const Lexique& lex) {
+    for (map<string, uint16_t>::const_iterator itmap = lex.getOccurences().begin(); itmap != lex.getOccurences().end(); ++itmap)
+    {
+        addWordUsage(itmap->first, itmap->second);
+    }
+    return *this;
+}
+
 std::ostream& operator<<(std::ostream& os, const Lexique& lex)
 {
     for (map<string, uint16_t>::const_iterator itmap = lex.getOccurences().begin(); itmap != lex.getOccurences().end(); ++itmap)

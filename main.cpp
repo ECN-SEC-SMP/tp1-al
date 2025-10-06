@@ -22,4 +22,9 @@ int main()
     cout << "Nombres de mots différents : " << nbmot << endl;
 
     //std::cout << lex;
+    Lexique lex2("Lexique2", "../lesMiserables_A.txt");
+
+    lex+=lex2;
+    lex2.sauvegarderLexique("lex2.txt");
+    lex.sauvegarderLexique("after.txt");
 }
