@@ -58,10 +58,10 @@ void Lexique::sauvegarderLexique(string texte) // Sauvegarde d'un lexique
         fichier << "Nom : " << this->nom << endl;
         for (map<string, uint16_t>::iterator itmap = occurences.begin(); itmap != occurences.end(); ++itmap)
         {
-            fichier << "dict[" << itmap->first << "] = " << itmap->second << endl;
+            fichier << "Occurence du mot '" << itmap->first << "' : " << itmap->second << endl;
         }
         fichier.close(); // Fermeture fichier
-        cout << "Ecriture dans " << texte << "terminée." << endl;
+        cout << "Ecriture dans " << texte << " terminée." << endl;
     }
     else
     {
