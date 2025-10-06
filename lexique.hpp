@@ -32,7 +32,7 @@ public:
 
     // Fonctions
     void sauvegarderLexique(string texte);
-
+    uint16_t getOccurencesFromWord(string mot);
 };
 
 #endif

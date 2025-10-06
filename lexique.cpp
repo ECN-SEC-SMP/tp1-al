@@ -2,6 +2,7 @@
 
 #include "utilitaire.hpp"
 
+#include <cstdint>
 #include <iostream>
 #include <fstream>
 #include <cstring>
@@ -55,4 +56,13 @@ void sauvegarderLexique(string texte) // Sauvegarde d'un lexique
     {
         cerr << "Erreur à l'ouverture" << endl;
     } // sinon
+}
+
+uint16_t Lexique::getOccurencesFromWord(string mot) {
+    //Si le mot est déjà dans le lexique
+    if(occurences.find(mot) != occurences.end()) {
+        return occurences[mot];
+    } else {
+        return 0;
+    }
 }
