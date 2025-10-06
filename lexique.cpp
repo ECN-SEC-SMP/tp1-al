@@ -134,8 +134,8 @@ std::ostream &operator-=(std::ostream &os, const Lexique &lex) // Opérateur -= 
         map<string, uint16_t>::const_iterator found = lex.getOccurences().find(itmap->first);
         if (found != lex.getOccurences().end())
         {
-            found->second -= iter->second;
-        };
+            ;
+        }
     }
 
     return os;
