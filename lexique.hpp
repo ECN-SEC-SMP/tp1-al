@@ -30,11 +30,13 @@ public:
     void sauvegarderLexique(string texte);
     void supprimerMot(string nom);
     void addWordUsage(string mot, uint16_t occurences);
+    void subWordUsage(string mot, uint16_t occurences);
     uint16_t nombreDeMots();
     uint16_t getOccurencesFromWord(string mot);
 
     // Operateurs
     Lexique& operator+=(const Lexique& lex);
+    Lexique& operator-=(const Lexique& lex);
 };
 
 std::ostream& operator<<(std::ostream& os, const Lexique& lex);

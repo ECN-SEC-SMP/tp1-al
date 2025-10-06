@@ -51,7 +51,7 @@ void Lexique::setOccurences(map<string, uint16_t> occurences) { this->occurences
 // Fonctions
 void Lexique::sauvegarderLexique(string texte) // Sauvegarde d'un lexique
 {
-    ofstream fichier(texte); //  Création du fichier
+    ofstream fichier(texte); // Création du fichier
     if (fichier.is_open())   // Si ouverture OK
     {
         // On parcours la liste
@@ -98,7 +98,21 @@ uint16_t Lexique::getOccurencesFromWord(string mot)
     }
 }
 
-void Lexique::addWordUsage(string mot, uint16_t occ) {
+void Lexique::subWordUsage(string mot, uint16_t occ)
+{
+    // Si le mot est déjà dans le lexique
+    if (occurences.find(mot) != occurences.end())
+    {
+        occurences[mot] = abs(occurences[mot] - occ);
+        if (occurences[mot] <= 0)
+        {
+            occurences.erase(mot);
+        }
+    }
+}
+
+void Lexique::addWordUsage(string mot, uint16_t occ)
+{
     // Si le mot est déjà dans le lexique
     if (occurences.find(mot) != occurences.end())
     {
@@ -110,7 +124,8 @@ void Lexique::addWordUsage(string mot, uint16_t occ) {
     }
 }
 
-Lexique& Lexique::operator+=(const Lexique& lex) {
+Lexique &Lexique::operator+=(const Lexique &lex)
+{
     for (map<string, uint16_t>::const_iterator itmap = lex.getOccurences().begin(); itmap != lex.getOccurences().end(); ++itmap)
     {
         addWordUsage(itmap->first, itmap->second);
@@ -118,7 +133,7 @@ Lexique& Lexique::operator+=(const Lexique& lex) {
     return *this;
 }
 
-std::ostream& operator<<(std::ostream& os, const Lexique& lex)
+std::ostream &operator<<(std::ostream &os, const Lexique &lex)
 {
     for (map<string, uint16_t>::const_iterator itmap = lex.getOccurences().begin(); itmap != lex.getOccurences().end(); ++itmap)
     {
@@ -127,16 +142,16 @@ std::ostream& operator<<(std::ostream& os, const Lexique& lex)
     return os;
 }
 
-std::ostream &operator-=(std::ostream &os, const Lexique &lex) // Opérateur -= surchargé
+Lexique &Lexique::operator-=(const Lexique &lex) // Opérateur -= surchargé
 {
     for (map<string, uint16_t>::const_iterator itmap = lex.getOccurences().begin(); itmap != lex.getOccurences().end(); ++itmap)
     {
         map<string, uint16_t>::const_iterator found = lex.getOccurences().find(itmap->first);
         if (found != lex.getOccurences().end())
         {
+            subWordUsage(itmap->first, itmap->second);
             ;
         }
     }
-
-    return os;
+    return *this;
 }
