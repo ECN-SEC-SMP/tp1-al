@@ -5,11 +5,12 @@
 #include <map>
 #include <iostream>
 #include <cstdint>
+#include "lexique.hpp"
 
 using namespace std;
 
 // Création de la classe
-class SubLexique
+class SubLexique : public Lexique
 {
 
 private:
