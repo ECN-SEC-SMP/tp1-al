@@ -1,11 +1,38 @@
 #include "lexique.hpp"
 
-#include <string>
-#include <iostream>
-#include <string>
-#include <fstream>
+#include "utilitaire.hpp"
 
-using namespace std;
+#include <iostream>
+#include <fstream>
+#include <cstring>
+
+Lexique::Lexique(string nom, string nom_fichier) {
+    string contenu;
+    if(!util::readFileIntoString(nom_fichier, contenu)) {
+        cerr << "Impossible de lire le fichier." << endl;
+    }
+
+    util::remove_punctuation(contenu);
+
+    //Découpage par mots
+    //Il faut dupliquer la string pour respecter le const de ".c_str()"
+    char* dup = strdup(contenu.c_str());
+    char* mot;
+    mot = strtok(dup, " \r\n");
+    while (mot != NULL) {
+        string mot_string = string(mot);
+        //Si le mot est déjà dans le lexique
+        if(occurences.find(mot_string) != occurences.end()) {
+            occurences[mot_string] = occurences[mot_string]+1;
+        } else {
+            occurences[mot_string] = 1;
+        }
+        cout << mot_string << " = " << occurences[mot_string] << endl;
+        mot = strtok(NULL, " \r\n");
+    }
+
+    free(dup);
+}
 
 // Getter
 string Lexique::getNom() const { return this->nom; }
