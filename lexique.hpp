@@ -7,6 +7,7 @@
 #include <map>
 #include <iostream>
 #include <cstdint>
+#include <fstream>
 
 using namespace std;
 
@@ -28,6 +29,9 @@ public:
     // Mutateurs
     void setNom(string nom);
     void setOccurences(map<string, uint16_t> occurences);
+
+    // Fonctions
+    void sauvegarderLexique(string texte);
 
 };
 
