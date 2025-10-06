@@ -54,7 +54,6 @@ void Lexique::sauvegarderLexique(string texte) // Sauvegarde d'un lexique
     ofstream fichier(texte); //  Création du fichier
     if (fichier.is_open())   // Si ouverture OK
     {
-        fichier << "Nom : " << this->nom << endl;
         for (map<string, uint16_t>::iterator itmap = occurences.begin(); itmap != occurences.end(); ++itmap)
         {
             fichier << "Occurence du mot '" << itmap->first << "' : " << itmap->second << endl;
@@ -68,11 +67,32 @@ void Lexique::sauvegarderLexique(string texte) // Sauvegarde d'un lexique
     }
 }
 
-uint16_t Lexique::getOccurencesFromWord(string mot) {
-    //Si le mot est déjà dans le lexique
-    if(occurences.find(mot) != occurences.end()) {
+void Lexique::supprimerMot(string nom) // Suppression d'un mot du lexique
+{
+    for (map<string, uint16_t>::iterator itmap = occurences.begin(); itmap != occurences.end(); ++itmap)
+    {
+        if (nom == itmap->first) // Si le mot de référence = mot présent dans le lexique, on le supprime
+        {
+            occurences.erase(itmap);
+            cout << "Mot supprimé " << endl;
+        }
+    }
+}
+
+uint16_t Lexique::nombreDeMots() // Compter le nombre de mots différents dans un lexique
+{
+    return occurences.size();   // Retourne la taille de la map (nombre de mots)
+}
+
+uint16_t Lexique::getOccurencesFromWord(string mot)
+{
+    // Si le mot est déjà dans le lexique
+    if (occurences.find(mot) != occurences.end())
+    {
         return occurences[mot];
-    } else {
+    }
+    else
+    {
         return 0;
     }
 }
