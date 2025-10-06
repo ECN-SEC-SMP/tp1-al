@@ -35,7 +35,6 @@ Lexique::Lexique(string nom, string nom_fichier)
         {
             occurences[mot_string] = 1;
         }
-        cout << mot_string << " = " << occurences[mot_string] << endl;
         mot = strtok(NULL, " \r\n");
     }
     free(dup);
@@ -43,7 +42,7 @@ Lexique::Lexique(string nom, string nom_fichier)
 
 // Getter
 string Lexique::getNom() const { return this->nom; }
-map<string, uint16_t> Lexique::getOccurences() { return this->occurences; }
+const map<string, uint16_t>& Lexique::getOccurences() const { return this->occurences; }
 
 // Setter
 void Lexique::setNom(string nom) { this->nom = nom; }
@@ -77,3 +76,13 @@ uint16_t Lexique::getOccurencesFromWord(string mot) {
         return 0;
     }
 }
+
+std::ostream& operator<<(std::ostream& os, const Lexique& lex)
+{
+    for (map<string, uint16_t>::const_iterator itmap = lex.getOccurences().begin(); itmap != lex.getOccurences().end(); ++itmap)
+    {
+        os << itmap->first << " = " << itmap->second << endl;
+    }
+    return os;
+}
+ 

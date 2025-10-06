@@ -17,14 +17,12 @@ private:
     string nom;
     map<string, uint16_t> occurences;
 public:
-    int occurence;
-
     // Constructeurs
     Lexique(string nom, string nom_fichier);
 
     // Accesseurs
     string getNom() const;
-    map<string, uint16_t> getOccurences();
+    const map<string, uint16_t>& getOccurences() const;
 
     // Mutateurs
     void setNom(string nom);
@@ -34,5 +32,7 @@ public:
     void sauvegarderLexique(string texte);
     uint16_t getOccurencesFromWord(string mot);
 };
+
+std::ostream& operator<<(std::ostream& os, const Lexique& lex);
 
 #endif

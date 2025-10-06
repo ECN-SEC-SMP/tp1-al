@@ -16,4 +16,6 @@ int main()
 
     string texte = "test.txt";
     lex.sauvegarderLexique(texte);
+
+    std::cout << lex;
 }
