@@ -26,8 +26,8 @@ int main()
 
     //lex+=lex2;
     lex -=lex2;
-    lex2.sauvegarderLexique("lex2.txt");
-    lex.sauvegarderLexique("after.txt");
+    // lex2.sauvegarderLexique("lex2.txt");
+    // lex.sauvegarderLexique("after.txt");
 
     
 }
