@@ -1,7 +1,6 @@
 #include "lexique.hpp"
 #include <cstdint>
 #include <iostream>
-#include <fstream>
 #include <cstring>
 
 int main()

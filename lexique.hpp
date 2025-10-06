@@ -1,5 +1,3 @@
-#ifndef __lexique_h
-#define __lexique_h
 #pragma once
 
 // Bibliothèques
@@ -7,7 +5,6 @@
 #include <map>
 #include <iostream>
 #include <cstdint>
-#include <fstream>
 
 using namespace std;
 
@@ -34,5 +31,3 @@ public:
 };
 
 std::ostream& operator<<(std::ostream& os, const Lexique& lex);
-
-#endif
