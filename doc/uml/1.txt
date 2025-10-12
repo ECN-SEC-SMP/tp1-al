@@ -1,0 +1,35 @@
+@startuml 1
+class Lexique {
+    #string nom
+    #map<string, uint16_t> occurences;
+
+    +Lexique(string nom);
+    +Lexique(string nom, string nom_fichier);
+
+    +string getNom() const;
+    +const map<string, uint16_t>& getOccurences() const;
+
+    +void setNom(string nom);
+    +void setOccurences(map<string, uint16_t> occurences);
+
+    +void sauvegarderLexique(string texte);
+    +void supprimerMot(string nom);
+    +void addWordUsage(string mot, uint16_t occurences);
+    +void subWordUsage(string mot, uint16_t occurences);
+    +uint16_t nombreDeMots();
+    +uint16_t getOccurencesFromWord(string mot);
+
+    +Lexique& operator+=(const Lexique& lex);
+    +Lexique& operator-=(const Lexique& lex);
+}
+
+class SubLexique {
+    -multimap<string, uint32_t> lignes;
+    +SubLexique(string nom, string nom_fichier);
+
+    +void sauvegarderLexique(string texte);
+}
+
+SubLexique -> Lexique
+
+@enduml

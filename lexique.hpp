@@ -11,12 +11,13 @@ using namespace std;
 // Création de la classe
 class Lexique {
 
-private:
+protected:
     string nom;
     map<string, uint16_t> occurences;
 public:
     // Constructeurs
     Lexique(string nom, string nom_fichier);
+    Lexique(string nom);
 
     // Accesseurs
     string getNom() const;

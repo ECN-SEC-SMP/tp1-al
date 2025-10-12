@@ -1,4 +1,5 @@
 #include "lexique.hpp"
+#include "sublexique.hpp"
 #include <cstdint>
 #include <iostream>
 #include <cstring>
@@ -29,5 +30,6 @@ int main()
     // lex2.sauvegarderLexique("lex2.txt");
     // lex.sauvegarderLexique("after.txt");
 
-    
+    SubLexique lex3("Sub", "../notreDameDeParis_A.txt");
+    lex3.sauvegarderLexique("sub.txt");
 }

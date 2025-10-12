@@ -40,6 +40,10 @@ Lexique::Lexique(string nom, string nom_fichier)
     free(dup);
 }
 
+Lexique::Lexique(string nom) {
+    this->nom = nom;
+}
+
 // Getter
 string Lexique::getNom() const { return this->nom; }
 const map<string, uint16_t> &Lexique::getOccurences() const { return this->occurences; }
